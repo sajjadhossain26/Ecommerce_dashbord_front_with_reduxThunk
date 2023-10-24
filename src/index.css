@@ -1,0 +1,10 @@
+.card.card-table {
+    padding: 20px;
+}
+div#DataTables_Table_9_paginate {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    right: 30px;
+    bottom: 28px;
+}
