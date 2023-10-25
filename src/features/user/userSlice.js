@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createPermission, deletePermission, getAllpermission } from "./userApiSlice";
+import { createPermission, deletePermission, getAllpermission, statusPermission } from "./userApiSlice";
 
 // Create auth slice
 
@@ -46,6 +46,15 @@ const userSlice = createSlice({
         .addCase(deletePermission.fulfilled,(state, action) => {
             state.permission = state.permission.filter((data) => data._id != action.payload.permission._id);
             state.message= action.payload.message
+        })
+
+        .addCase(statusPermission.rejected,(state, action) => {
+            state.error = action.error.message
+        })
+
+        .addCase(statusPermission.fulfilled,(state, action) => {
+            state.permission = action.payload.permission
+            state.message = action.payload.message
         })
 
     

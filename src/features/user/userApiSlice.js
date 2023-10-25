@@ -43,3 +43,16 @@ export const deletePermission = createAsyncThunk("user/deletePermission", async 
     
  })
  
+
+ // Register Permission
+export const statusPermission = createAsyncThunk("user/statusPermission", async ({status, id}) => {
+   try {
+     const response = await axios.put(`http://localhost:5050/api/permission/status/${id}`, {status: status},  {
+        withCredentials: true,
+     })
+     return response.data
+   } catch (error) {
+    throw new Error(error.response.data.message)
+   }
+   
+})

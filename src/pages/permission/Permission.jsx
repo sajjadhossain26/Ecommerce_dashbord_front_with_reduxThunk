@@ -5,10 +5,11 @@ import ModalPopup from "../../components/ModalPopUp/ModalPopup";
 import DataTable from "datatables.net-dt";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { useDispatch, useSelector } from "react-redux";
-import { createPermission, deletePermission, getAllpermission } from "../../features/user/userApiSlice";
+import { createPermission, deletePermission, getAllpermission, statusPermission } from "../../features/user/userApiSlice";
 import { getAllPermissionData, setMessageEmpty } from "../../features/user/userSlice";
 import { createToast } from "../../utils/toast";
 import swal from "sweetalert";
+import { timeAgo } from "../../helpers/timeAgo";
 
 const Permission = () => {
   const [input, setInput] = useState()
@@ -31,9 +32,7 @@ const Permission = () => {
     new DataTable(".datatable");
   });
 
-  useEffect(() => {
-    dispatch(getAllpermission({name: input}))
-  },[])
+
 
 
   const handleDeletepermission = (id) => {
@@ -52,6 +51,12 @@ const Permission = () => {
           swal("Your imaginary file is safe!");
         }
       });
+  }
+
+  // Handle status update
+
+  const handleStatusUpdate = (status, id) => {
+    dispatch(statusPermission({status, id}))
   }
 
 
@@ -115,20 +120,21 @@ const Permission = () => {
                      {
                       permission &&
                        [...permission].reverse().map((item, index) => {
-                          return ( <tr key={index}>
+                          return (
+                             <tr key={index}>
                               <td style={{ width: "40px" }}>{index+1}</td>
                               <td>{item.name}</td>
                               <td>{item.slug}</td>
-                              <td>3min ago</td>
+                              <td>{timeAgo(item.createdAt)}</td>
                               <td>
                                 <div className="status-toggle">
                                   <input
                                     type="checkbox"
                                     id="status_1"
                                     className="check"
-                                    checked
+                                    checked = {item.status? true : false}
                                   />
-                                  <label for="status_1" className="checktoggle">
+                                  <label for="status_1" className="checktoggle" onClick={() =>handleStatusUpdate(item.status, item._id)}>
                                     checkbox
                                   </label>
                                 </div>
