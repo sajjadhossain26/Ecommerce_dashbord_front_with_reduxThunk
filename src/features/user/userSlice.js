@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createPermission, deletePermission, getAllpermission, statusPermission } from "./userApiSlice";
+import { createPermission, createRole, deletePermission, getAllpermission, getAllrole, statusPermission, updatedRole } from "./userApiSlice";
 
 // Create auth slice
 
@@ -35,6 +35,7 @@ const userSlice = createSlice({
         })
 
         .addCase(createPermission.fulfilled,(state, action) => {
+            state.permission = state.permission ?? [];
             state.permission.push(action.payload.permission)
             state.message= action.payload.message
         })
@@ -56,6 +57,33 @@ const userSlice = createSlice({
             state.permission = action.payload.permission
             state.message = action.payload.message
         })
+
+        .addCase(getAllrole.rejected,(state, action) => {
+            state.error = action.error.message
+        })
+
+        .addCase(getAllrole.fulfilled,(state, action) => {
+            state.role = action.payload
+        })
+
+        .addCase(createRole.rejected,(state, action) => {
+            state.error = action.error.message
+        })
+
+        .addCase(createRole.fulfilled,(state, action) => {
+            state.role = state.role ?? [];
+            state.role.push(action.payload.role)
+            state.message = action.payload.message
+        })
+        .addCase(updatedRole.rejected,(state, action) => {
+            state.error = action.error.message
+        })
+
+        .addCase(updatedRole.fulfilled,(state, action) => {
+            state.role[state.role.findIndex((data) => data._id == action.payload.role._id)] = action.payload.role
+            state.message = action.payload.message
+        })
+
 
     
     },

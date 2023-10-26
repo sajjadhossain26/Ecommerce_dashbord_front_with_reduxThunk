@@ -11,6 +11,10 @@ export const useFormField = (initialData) => {
       }))
       }
 
-      return {handleInputChange, input}
+      const formReset = () => {
+         setInput(initialData)
+      }
+
+      return {handleInputChange, input, formReset}
     
 }

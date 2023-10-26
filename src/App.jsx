@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux';
 import { loggedInUser } from './features/auth/authApiSlice';
-import { getAllpermission } from './features/user/userApiSlice';
+import { getAllpermission, getAllrole } from './features/user/userApiSlice';
 
 function App() {
 
@@ -22,6 +22,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getAllpermission())
+    dispatch(getAllrole())
   },[])
 
   return (
