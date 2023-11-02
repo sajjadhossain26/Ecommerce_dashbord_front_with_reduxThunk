@@ -4,25 +4,8 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router/router";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
-import { loggedInUser } from "./features/auth/authApiSlice";
-import { getAllpermission, getAllrole } from "./features/user/userApiSlice";
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (localStorage.getItem("user")) {
-      dispatch(loggedInUser());
-    }
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getAllpermission());
-    dispatch(getAllrole());
-  }, [dispatch]);
-
   return (
     <>
       <ToastContainer
