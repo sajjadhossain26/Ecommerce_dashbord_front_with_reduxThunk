@@ -1,10 +1,20 @@
 .card.card-table {
-    padding: 20px;
+  padding: 20px;
 }
 div#DataTables_Table_9_paginate {
-    display: flex;
-    gap: 20px;
-    position: absolute;
-    right: 30px;
-    bottom: 28px;
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 30px;
+  bottom: 28px;
+}
+.iybuay {
+  display: flex;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 20px !important;
+  font-weight: 500;
+}
+.rdt_TableCell {
+  font-size: 16px !important;
 }

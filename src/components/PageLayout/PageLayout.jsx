@@ -5,6 +5,11 @@ import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loggedInUser } from "../../features/auth/authApiSlice";
 import { getAllpermission, getAllrole } from "../../features/user/userApiSlice";
+import {
+  allBrand,
+  getAllCategory,
+  getAllTag,
+} from "../../features/product/productApiSlice";
 
 const PageLayout = () => {
   const dispatch = useDispatch();
@@ -18,6 +23,9 @@ const PageLayout = () => {
   useEffect(() => {
     dispatch(getAllpermission());
     dispatch(getAllrole());
+    dispatch(allBrand());
+    dispatch(getAllTag());
+    dispatch(getAllCategory());
   }, [dispatch]);
 
   return (
