@@ -92,3 +92,22 @@ export const getAllCategory = createAsyncThunk(
     }
   }
 );
+
+//  create Categorys
+export const createCategorys = createAsyncThunk(
+  "product/createCategorys",
+  async (data) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5050/api/category",
+        data,
+        {
+          withCredentials: true,
+        }
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  }
+);

@@ -1,0 +1,13 @@
+.product_photos {
+  display: flex;
+  gap: 10px;
+}
+.product_photos .product_phots_item {
+  position: relative;
+}
+.product_photos .product_phots_item button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+}

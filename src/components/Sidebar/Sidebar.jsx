@@ -24,8 +24,15 @@ const Sidebar = () => {
                   <i class="fe fe-cart"></i> <span>Orders</span>
                 </Link>
               </li>
-              <li className="">
-                <Link to="/users" href="index.html">
+              <li
+                className={
+                  location.pathname == "/product" ||
+                  location.pathname == "/create_product"
+                    ? "active"
+                    : ""
+                }
+              >
+                <Link to="/product" href="index.html">
                   <i className="fe fe-bolt"></i> <span>Products</span>
                 </Link>
               </li>

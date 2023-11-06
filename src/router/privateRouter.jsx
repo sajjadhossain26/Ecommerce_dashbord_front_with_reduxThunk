@@ -5,10 +5,12 @@ import Brand from "../pages/brand/Brand";
 import Category from "../pages/category/Category";
 import Dashborad from "../pages/dashboard/Dashborad";
 import Permission from "../pages/permission/Permission";
+import Create from "../pages/product/Create";
+import Product from "../pages/product/Product";
 import Role from "../pages/role/Role";
 import Tag from "../pages/tag/Tag";
 import User from "../pages/user/User";
-import PrivateGard from "./privateGard";
+import PrivateGard from "./PrivateGard";
 
 const privateRouter = [
   {
@@ -44,6 +46,14 @@ const privateRouter = [
           {
             path: "/category",
             element: <Category />,
+          },
+          {
+            path: "/product",
+            element: <Product />,
+          },
+          {
+            path: "/create_product",
+            element: <Create />,
           },
         ],
       },
